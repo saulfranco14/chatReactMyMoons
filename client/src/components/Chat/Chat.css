@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1A1A1D;
+    background-image: linear-gradient(90deg,#96bbf1 0,#ceb9f1);
   }
   
   .container {

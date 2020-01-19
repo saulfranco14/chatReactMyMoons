@@ -8,7 +8,7 @@ const app       = express();
 const server    = http.createServer(app);
 const io        = socketio(server);
 
-    io.on('connection', (socket) =>{
+    io.on('connect', (socket) =>{
         console.log("Conexión");
 
         socket.on('join', ({ name, lastName}, callback ) => {
@@ -20,8 +20,8 @@ const io        = socketio(server);
             }
 
             socket.emit('message', { user : 'admin', text: ` Hola ${user.name} ${user.lastName}` } )
-            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Bienvenido ${lastName}` } );
-            socket.join(user, lastName);
+            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Bienvenido ${user.lastName}` } );
+            socket.join(user.lastName);
             callback();
         });
 
