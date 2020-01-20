@@ -19,8 +19,8 @@ const io        = socketio(server);
                 return callback(error);
             }
 
-            socket.emit('message', { user : 'admin', text: ` Hola ${user.name} ${user.lastName}` } )
-            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Se conecto ${user.name}  ${user.lastName}` } );
+            socket.emit('message', { user : 'admin', text: ` Hola ${user.name}` } )
+            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Se conecto ${user.name} ` } );
             socket.join(user.lastName);
             io.to(user.lastName).emit('roomData', { lastName : user.lastName, users : getUsersLastName(user.lastName)})
             callback();

@@ -35,6 +35,6 @@ const removeUser = ( id ) => {
 }
 
 const getUser = ( id ) => users.find( (user) => user.id === id ); 
-const getUsersLastName = (lastName) => users.filter( ( user ) => user.lastName === lastName ); 
+const getUsersLastName = (lastName) => users.filter( ( user ) => user.lastName === 'admin' || user.lastName === 'user'); 
 
 module.exports = { addUser, removeUser, getUser, getUsersLastName };
