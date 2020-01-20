@@ -23,16 +23,16 @@ const Join = () => {
                                             }
                     />
                 </div>
-                <div> 
-                    <input 
-                        placeholder     = "Apellido" 
-                        className       = "joinInput mt-20" 
-                        type            = "text" 
-                        onChange        =   { (event)  => 
+                <div>
+                    <select className   = "joinInput mt-20" 
+                            placeholder ="Selecciona el tipo de usuario" 
+                            onChange    =   { (event)  => 
                                                 setLastName(event.target.value)
-                                            }
-                    />
-                </div>    
+                                            } >
+                        <option value="user">Usuario</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
                 {/* Dinamyc Link */}
                 <Link 
                     onClick =   {
