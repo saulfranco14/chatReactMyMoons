@@ -20,8 +20,9 @@ const io        = socketio(server);
             }
 
             socket.emit('message', { user : 'admin', text: ` Hola ${user.name} ${user.lastName}` } )
-            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Bienvenido ${user.lastName}` } );
+            socket.broadcast.to(user.lastName).emit('message', { user: 'admin', text:  `Se conecto ${user.name}  ${user.lastName}` } );
             socket.join(user.lastName);
+            io.to(user.lastName).emit('roomData', { lastName : user.lastName, users : getUsersLastName(user.lastName)})
             callback();
         });
 
@@ -29,13 +30,17 @@ const io        = socketio(server);
 
             const user = getUser(socket.id);
             io.to(user.lastName).emit('message', { user: user.name, text: message } );
+            io.to(user.lastName).emit('roomData', { lastName: user.lastName, users : getUsersLastName(user.lastName)} );
 
             callback();
 
         });
 
         socket.on('disconnect', () =>{
-            console.log("Desconectado");
+            const user = removeUser(socket.id);
+            if(user){
+                io.to(user.lastName).emit('message', { user:'admin' , text : `${user.name} ${user.lastName} hasta luego.` })
+            }
         })
     });
 
