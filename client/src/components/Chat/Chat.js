@@ -16,7 +16,7 @@ const Chat = ( { location } ) => {
     const [ lastName , setLastName] = useState('');
     const [ message , setMessage]   = useState('');
     const [ messages , setMessages] = useState([]);
-    const endPoint                  = 'localhost:5000';
+    const endPoint                  = 'https://chat-mymoons.herokuapp.com/';
 
 
     useEffect ( () => {
@@ -62,7 +62,6 @@ const Chat = ( { location } ) => {
                 <InfoBar name={ name } />
                 <Messages messages={messages} name={name}/>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />                
-               
             </div>
         </div>
     )

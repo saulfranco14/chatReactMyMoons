@@ -27,11 +27,9 @@ const io        = socketio(server);
         });
 
         socket.on('sendMessage', ( message, callback ) => {
-
             const user = getUser(socket.id);
             io.to(user.lastName).emit('message', { user: user.name, text: message } );
             io.to(user.lastName).emit('roomData', { lastName: user.lastName, users : getUsersLastName(user.lastName)} );
-
             callback();
 
         });

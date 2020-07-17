@@ -12,7 +12,7 @@ const Join = () => {
 
         <div className="containerOuter">
             <div className="containerInner">
-                <h1 className="heading"> Chat Moons</h1>
+                <h1 className="heading"> Chat</h1>
                 <div> 
                     <input 
                         placeholder     = "Nombre" 
